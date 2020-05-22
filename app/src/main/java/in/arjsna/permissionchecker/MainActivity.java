@@ -10,6 +10,9 @@ import dagger.android.support.HasSupportFragmentInjector;
 import in.arjsna.permissionchecker.basemvp.BaseActivity;
 import in.arjsna.permissionchecker.permissiongrouplist.PermissionListFragment;
 import javax.inject.Inject;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 public class MainActivity extends BaseActivity implements HasSupportFragmentInjector {
 
@@ -19,13 +22,16 @@ public class MainActivity extends BaseActivity implements HasSupportFragmentInje
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    AppCenter.start(getApplication(), "587d1fdf-36b1-48b8-b9fb-b69790456b27",
+                  Analytics.class, Crashes.class);
+    
     setContentView(R.layout.activity_main);
     if (savedInstanceState == null) {
       getSupportFragmentManager().beginTransaction()
           .add(R.id.permission_container, new PermissionListFragment())
           .commit();
     }
-    ratingDialog = new EasyRatingDialog(this);
+    
   }
 
   @Override protected void onStart() {
