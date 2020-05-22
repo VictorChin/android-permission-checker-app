@@ -30,12 +30,12 @@ ext {
   constraintLayoutVersion = "1.0.2"
   rxAndroidVersion = "2.0.1"
   rxJavaVersion = "2.1.0"
+  appCenterSdkVersion  = "3.2.1"
 }
 
 dependencies {
-  def appCenterSdkVersion = '3.2.1'
   implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
-  implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}
+  implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
